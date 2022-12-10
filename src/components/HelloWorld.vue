@@ -3,7 +3,7 @@
   that allow us to use Composition API with less boilerplate
 -->
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { onMounted, ref } from 'vue';
 
 defineProps<{
   msg: string;
@@ -17,18 +17,18 @@ function increment() {
   count.value++;
 }
 
-const rawHtml = "<h1>Raw Html&amp;</h1>";
+const rawHtml = '<h1>Raw Html&amp;</h1>';
 
 const dynamicAttrs = {
   id: 'container',
-  class: 'wrapper'
+  class: 'wrapper',
 };
-const attributeName = "href";
-const url = "http://google.com";
-const eventName = "click";
+const attributeName = 'href';
+const url = 'http://google.com';
+const eventName = 'click';
 
 function callDynamicEvent() {
-  alert("This is dynamic event.");
+  alert('This is dynamic event.');
 }
 
 // lifecycle hooks
@@ -36,7 +36,6 @@ onMounted(() => {
   console.log(`The initial count is ${count.value}.`);
   increment();
 });
-
 </script>
 
 <template>
@@ -56,7 +55,8 @@ onMounted(() => {
     </div>
     <h3>
       You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
+      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a>
+      +
       <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
       What's next?
     </h3>

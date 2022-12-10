@@ -4,6 +4,9 @@
   </div>
 </template>
 
+<script lang="ts">
+</script>
+
 <style>
 @media (min-width: 1024px) {
   .about {

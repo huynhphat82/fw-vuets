@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const text = "test";
+const text = 'test';
 </script>
 
 <template>

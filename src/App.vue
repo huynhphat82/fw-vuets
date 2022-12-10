@@ -1,11 +1,20 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
+import { RouterLink, RouterView } from 'vue-router';
+
+import HelloWorld from './components/HelloWorld.vue';
+import TheWelcome from './components/TheWelcome.vue';
+import ValidationForm from './components/ValidationForm2.vue';
+
+const test = null;
+const url =
+  'http://www.test/sds/sdsfsdfd/dsfsdf/dsfsdfsd/dsfsdfsd/dsfdsfs/sdfsdfsd/sdfsdfsd/sdfgdsf/dsfsdf/sdfsdf/sdfsdf/sdfsdfs';
 </script>
 
 <template>
   <header>
     <img
+      @click="() => {}"
+      :name="test"
       alt="Vue logo"
       class="logo"
       src="@/assets/logo.svg"
@@ -14,7 +23,10 @@ import HelloWorld from "./components/HelloWorld.vue";
     />
 
     <div class="wrapper">
+      <the-welcome />
       <HelloWorld msg="You did it!" />
+
+      <ValidationForm />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
@@ -83,7 +95,6 @@ nav a:first-of-type {
     text-align: left;
     margin-left: -1rem;
     font-size: 1rem;
-
     padding: 1rem 0;
     margin-top: 1rem;
   }
