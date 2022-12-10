@@ -1,18 +1,6 @@
 <script setup lang="ts">
+import yup from '@/utils/yup-extended';
 import { useField, useForm } from 'vee-validate';
-import * as yup from 'yup';
-
-yup.addMethod(yup.string, 'confirmationPassword', function (...args) {
-  const [anotherField, message] = args;
-  console.log('args => ', anotherField, message);
-  return this.test('confirmation-password', message, function (value) {
-    // const { path, createError } = this;
-    // [value] - value of the property being tested
-    // [path]  - property name,
-    console.log('value => ', value, anotherField, this.parent.password);
-    return `${anotherField}` == value;
-  });
-});
 
 const { handleSubmit, errors } = useForm({
   validationSchema: yup.object({
@@ -21,10 +9,7 @@ const { handleSubmit, errors } = useForm({
       addresses: yup.array().of(yup.string().required()),
     }),
     password: yup.string().min(5).required(),
-    confirmationPassword: yup
-      .string()
-      .required()
-      .confirmationPassword('password', 'xxxxxx'),
+    confirmationPassword: yup.string().confirmationPassword('password'),
     // .oneOf([yup.ref('password')], 'Passwords do not match'),
   }),
 });
