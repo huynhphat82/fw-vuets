@@ -34,6 +34,30 @@ yup.addMethod<yup.StringSchema>(
   },
 );
 
+yup.addMethod<yup.DateSchema>(
+  yup.date,
+  'after',
+  function (anotherField: string, message: string = 'Date is after') {
+    return this.test('after', message, function (value) {
+      let anotherFieldValue = undefined;
+      try {
+        anotherFieldValue = String(anotherField)
+          .split('.')
+          .reduce((carry, key) => {
+            carry = carry[key];
+            return carry;
+          }, this.parent);
+      } catch (error) {
+        // console.log(`${JSON.parse(JSON.stringify(this))['type']}: `, error);
+      }
+      if (!value && !anotherFieldValue) {
+        return true;
+      }
+      return anotherFieldValue === value;
+    });
+  },
+);
+
 declare module 'yup' {
   // Declare types of new rules
   // interface StringSchema<
